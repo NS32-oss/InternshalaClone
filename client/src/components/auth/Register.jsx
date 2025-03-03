@@ -19,7 +19,7 @@ function Register() {
       .then((res) => {
         console.log(res);
         toast.success("Login Success");
-        navigate("/");
+        navigate("/subscriptions"); // Redirect to subscriptions page after successful signup
       })
       .catch((err) => {
         console.log(err);
@@ -42,6 +42,7 @@ function Register() {
   const closeLogin = () => {
     setDivVisible(false);
   };
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">

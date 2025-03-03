@@ -18,38 +18,36 @@ const plans = {
 };
 
 // ✅ Allow payments only from 10-11 AM IST
-// const isAllowedTime = () => {
-//   const currentISTTime = moment().utcOffset("+05:30");
-//   return currentISTTime.hour() === 10;
-// };
+const isAllowedTime = () => {
+  const currentISTTime = moment().utcOffset("+05:30");
+  return currentISTTime.hour() === 10;
+};
 
 router.post("/subscribe", async (req, res) => {
   const { email, plan } = req.body;
-  console.log("🔹 Subscription request received for:", plan);
-  console.log("🔹 Email:", email);
-  console.log(plans);
+
+  if (!isAllowedTime()) {
+    return res
+      .status(400)
+      .json({ error: "Payment is allowed only between 10-11 AM IST" });
+  }
+
   if (!plans[plan]) {
     return res.status(400).json({ error: "Invalid plan selected" });
   }
 
   try {
-    console.log("🔹 Subscription request received for:", plan);
-    console.log("🔹 Email:", email);
-
     const subscription = await razorpay.subscriptions.create({
       plan_id: plans[plan].plan_id,
       customer_notify: 1,
       total_count: 12,
     });
 
-    console.log("✅ Subscription created:", subscription);
     res.json({ subscription_id: subscription.id });
   } catch (error) {
-    console.error("❌ Razorpay API Error:", error);
     res.status(500).json({ error: error.message });
   }
 });
-
 
 // ✅ Send Email After Successful Payment
 const transporter = nodemailer.createTransport({

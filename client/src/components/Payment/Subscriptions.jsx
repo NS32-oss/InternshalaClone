@@ -9,6 +9,7 @@ import {
 } from "@material-tailwind/react";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { MinusCircleIcon } from "@heroicons/react/24/outline";
+import { useNavigate } from "react-router-dom";
 
 const plans = [
   {
@@ -60,6 +61,7 @@ const plans = [
 const Subscriptions = () => {
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   const handleSubscription = async () => {
     if (!selectedPlan || !email) {
@@ -78,8 +80,7 @@ const Subscriptions = () => {
 
       if (data.subscription_id) {
         const options = {
-          // razor pay key id from .env
-          key:  import.meta.env.VITE_RAZORPAY_KEY_ID,
+          key: import.meta.env.VITE_RAZORPAY_KEY_ID,
           amount: plans.find((p) => p.name === selectedPlan).price * 100,
           currency: "INR",
           name: "Subscription Portal",
@@ -87,6 +88,7 @@ const Subscriptions = () => {
           subscription_id: data.subscription_id,
           handler: function (response) {
             alert("Payment Successful!");
+            navigate("/"); // Redirect to home page after successful subscription
           },
           prefill: {
             email: email,
