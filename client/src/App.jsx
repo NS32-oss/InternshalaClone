@@ -20,7 +20,9 @@ import DetailApplication from "./applications/DetailApplication";
 import UserApplication from "./profile/UserApplication";
 import UserApplicationDetail from "./applications/DetailApplicationUser";
 import Footer from "./components/Footer/Footer";
-import Navbar from "./Components/Navbar/Navbar";
+import Navbar from "./components/Navbar/Navbar";
+import Subscriptions from "./components/Payment/Subscriptions";
+import PricingSection11 from "./components/Payment/test"; // Import the PricingSection11 component
 
 function App() {
   const user = useSelector(selectUser);
@@ -64,6 +66,8 @@ function App() {
         <Route path="/applications" element={<ViewAllApplication />} />
         <Route path="/userapplicationdetail" element={<UserApplicationDetail />} />
         <Route path="/userapplication" element={<UserApplication />} />
+        <Route path="/subscriptions" element={<Subscriptions />} />
+        <Route path="/pricing" element={<PricingSection11 />} /> {/* Add the route for PricingSection11 */}
       </Routes>
       <Footer />
     </div>
