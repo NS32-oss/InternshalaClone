@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import first from "../../Assets/Firstslide.png";
-import second from "../../Assets/secondslide.webp";
-import third from "../../Assets/thirdsilde.webp";
-import fouth from "../../Assets/fourthslide.webp";
+import first from "../../assets/Firstslide.png";
+import second from "../../assets/secondslide.webp";
+import third from "../../assets/thirdsilde.webp";
+import fouth from "../../assets/fourthslide.webp";
 import "./home.css";
 import Job from "./Job";
 import axios from "axios";
