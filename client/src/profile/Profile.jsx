@@ -6,7 +6,6 @@ import UserLocation from "../components/Location/UserLocation";
 
 function Profile() {
   const user = useSelector(selectUser);
-  console.log("USER : ", user);
 
   return (
     <div>

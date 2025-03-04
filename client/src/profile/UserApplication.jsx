@@ -24,7 +24,6 @@ function UserApplication() {
     };
     fetchApplication();
   }, []);
-  console.log(application);
   return (
     <div>
       <div className="hide">
@@ -57,30 +56,28 @@ function UserApplication() {
                 </thead>
                 <tbody>
                   {userapplication.map((data) => (
-                    <>
-                      <tr className="border-b">
-                        <td className="whitespace-nowrap px-6 py-4">
-                          {data.company}
-                        </td>
-                        <td className="whitespace-nowrap px-6 py-4">
-                          {data.category}
-                        </td>
-                        <td className="whitespace-nowrap px-6 py-4">
-                          {new Date(data?.createdAt).toLocaleDateString()}
-                        </td>
-                        <td className="whitespace-nowrap px-6 py-4">
-                          {data.user.name}
-                        </td>
-                        <td className="whitespace-nowrap px-6 py-4">
-                          <Link to={`/UserapplicationDetail?a=${data._id}`}>
-                            <i className="bi bi-envelope-open text-blue-500"></i>
-                          </Link>
-                        </td>
-                        <td className="whitespace-nowrap px-6 py-4">
-                          {data.status}
-                        </td>
-                      </tr>
-                    </>
+                    <tr className="border-b" key={data._id}>
+                      <td className="whitespace-nowrap px-6 py-4">
+                        {data.company}
+                      </td>
+                      <td className="whitespace-nowrap px-6 py-4">
+                        {data.category}
+                      </td>
+                      <td className="whitespace-nowrap px-6 py-4">
+                        {new Date(data?.createdAt).toLocaleDateString()}
+                      </td>
+                      <td className="whitespace-nowrap px-6 py-4">
+                        {data.user.name}
+                      </td>
+                      <td className="whitespace-nowrap px-6 py-4">
+                        <Link to={`/UserapplicationDetail?a=${data._id}`}>
+                          <i className="bi bi-envelope-open text-blue-500"></i>
+                        </Link>
+                      </td>
+                      <td className="whitespace-nowrap px-6 py-4">
+                        {data.status}
+                      </td>
+                    </tr>
                   ))}
                 </tbody>
               </table>
@@ -92,7 +89,7 @@ function UserApplication() {
       <div className="show">
         <h1>View All Applications</h1>
         {userapplication.map((data) => (
-          <section className="text-gray-600 body-font">
+          <section className="text-gray-600 body-font" key={data._id}>
             <div className="container px-5 py-2 mx-auto flex flex-wrap">
               <div className="flex flex-wrap -m-4">
                 <div className="p-4 lg:w-1/2 md:w-full">
@@ -118,7 +115,8 @@ function UserApplication() {
                         Applied by {data.user.name}
                       </p>
                       <p className="leading-relaxed text-base">
-                        Applied on {new Date(data?.createdAt).toLocaleDateString()}
+                        Applied on{" "}
+                        {new Date(data?.createdAt).toLocaleDateString()}
                       </p>
                       <p className="leading-relaxed text-base">
                         Application status {data.status}

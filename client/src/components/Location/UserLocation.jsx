@@ -36,7 +36,7 @@ const UserLocation = () => {
     try {
       // 1. Reverse Geocode (Google Maps API)
       const geoRes = await fetch(
-        `https://maps.gomaps.pro/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${GOOGLE_MAPS_API_KEY}`
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${GOOGLE_MAPS_API_KEY}`
       );
       const geoData = await geoRes.json();
 
@@ -85,7 +85,7 @@ const UserLocation = () => {
     if (!window.google) {
       // Dynamically load the Google Maps script
       const script = document.createElement("script");
-      script.src = `https://maps.gomaps.pro/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&callback=initMap`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&callback=initMap`;
       script.async = true;
       script.defer = true;
       // Once the script loads, set mapLoaded to true
@@ -110,13 +110,13 @@ const UserLocation = () => {
       center: { lat: latitude, lng: longitude },
       zoom: 12,
     });
-  
+
     const marker = new window.google.maps.Marker({
       position: { lat: latitude, lng: longitude },
       map: map,
       title: "You are here!",
     });
-  
+
     // Create an InfoWindow with weather details
     const infoWindowContent = `
       <div style="font-size: 14px;">

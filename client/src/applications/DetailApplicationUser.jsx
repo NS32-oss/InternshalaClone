@@ -6,6 +6,7 @@ function DetailApplicationUser() {
   let search = window.location.search;
   const params = new URLSearchParams(search);
   const id = params.get("a");
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
@@ -17,11 +18,13 @@ function DetailApplicationUser() {
     fetchData();
   }, [id]);
 
-  console.log(data);
   return (
     <div>
       {data.map((data) => (
-        <section className="text-gray-600 body-font overflow-hidden">
+        <section
+          className="text-gray-600 body-font overflow-hidden"
+          key={data._id}
+        >
           <div className="container px-5 py-24 mx-auto">
             <div className="lg:w-4/5 mx-auto flex flex-wrap">
               <img

@@ -13,7 +13,6 @@ import Sidebar from "./Sidebar";
 function Navbar() {
   const navigate = useNavigate();
   const user = useSelector(selectUser);
-  console.log("user : ", user);
   const [isDivVisibleForintern, setDivVisibleForintern] = useState(false);
   const [isDivVisibleForJob, setDivVisibleFroJob] = useState(false);
   const [isDivVisibleForlogin, setDivVisibleFrologin] = useState(false);
@@ -231,7 +230,7 @@ function Navbar() {
                 <div className="py-6">
                   <div className="flex bg-white rounded-lg justify-center overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
                     <div className="w-full p-8 lg:w-1/2">
-                      <p
+                      <div
                         onClick={loginFunction}
                         className="flex items-center h-9 justify-center mt-4 text-white bg-slate-100 rounded-lg hover:bg-gray-100"
                       >
@@ -256,7 +255,7 @@ function Navbar() {
                           </svg>
                         </div>
                         <h4 className="text-gray-500">Login With Google</h4>
-                      </p>
+                      </div>
                       <div className="mt-4 flex items-center justify-between">
                         <span className="border-b- w-1/5 lg:w-1/4"></span>
                         <p className="text-gray-500 text sm font-bold mb-2">
