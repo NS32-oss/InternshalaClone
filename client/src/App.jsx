@@ -13,7 +13,7 @@ import JobDetail from "./components/Job/JobDetail";
 import InternDetail from "./components/Internships/InternDetail";
 import Profile from "./profile/Profile";
 import AdminLogin from "./admin/AdminLogin";
-import AdminPanel from "./admin/AdminPanel";
+import Adminpanel from "./admin/Adminpanel";
 import ViewAllApplication from "./admin/ViewAllApplication";
 import PostInternships from "./admin/PostInternships";
 import DetailApplication from "./applications/DetailApplication";
