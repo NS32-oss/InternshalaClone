@@ -33,7 +33,7 @@ function InternDetail() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        `http://localhost:5000/api/internship/${id}`
+        `http://localhost:5000/api/training-programs/${id}`
       );
       setData(response.data);
 

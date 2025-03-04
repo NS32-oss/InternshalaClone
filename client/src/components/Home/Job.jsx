@@ -9,7 +9,7 @@ function Job() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/job`);
+        const response = await axios.get(`http://localhost:5000/api/positions`);
         setJobData(response.data);
       } catch (error) {
         console.error("Error fetching job data:", error);
@@ -38,7 +38,9 @@ function Job() {
   ];
 
   const filteredJobs = jobData.filter(
-    (job) => selectedCategory === "All" || job.category.toLowerCase() === selectedCategory.toLowerCase()
+    (job) =>
+      selectedCategory === "All" ||
+      job.category.toLowerCase() === selectedCategory.toLowerCase()
   );
 
   return (
