@@ -25,7 +25,7 @@ ul p {
 }
 .search {
   position: relative;
-  left: 34%;
+  left: 10%; /* Adjusted to move the search bar to the left */
   margin-top: 15px;
 }
 .search i {
@@ -36,9 +36,10 @@ ul p {
   margin-left: 10px;
   font-size: 15px;
   padding: 12px 2px;
-  width: 100px;
+  width: 200px;
   color: black;
-  border: none;
+  border: black 2px solid;
+  border-radius: 6px;
   outline: one;
 }
 .auth {
@@ -53,10 +54,11 @@ ul p {
   outline: #078edd 2px solid;
   border: none;
   width: 60px;
-  margin-right: -52px;
+  margin-right: -62px;
   height: 25px;
   font-size: 16px;
   border-radius: 2px;
+  
 }
 .btn2 {
   color: white;
@@ -74,7 +76,7 @@ ul p {
   position: relative;
   left: 33%;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 24px;
   height: 30px;
   margin-left: 23px;
   font-weight: 500;
@@ -82,8 +84,8 @@ ul p {
 }
 .admin {
   position: relative;
-  left: 36%;
-  margin-top: 18px;
+  left: 29%;
+  margin-top: 24px;
 }
 .admin button {
   color: white;
@@ -181,7 +183,7 @@ ul p {
 .login {
   width: 35%;
   position: absolute;
-  left: 33%;
+  left: 13%;
   z-index: 1;
   background-color: #ffff;
   top: 20%;
@@ -273,3 +275,5 @@ ul p {
 .line {
   width: 0.5px;
 }
+/* Add this CSS rule to increase the size of the logo */
+/

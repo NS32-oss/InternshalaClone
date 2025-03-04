@@ -22,6 +22,7 @@ function Navbar() {
     signInWithPopup(auth, provider)
       .then((res) => {
         console.log(res);
+        navigate("/subscriptions");
       })
       .catch((err) => {
         console.log(err);
@@ -79,7 +80,7 @@ function Navbar() {
         <ul>
           <div className="img">
             <Link to={"/"}>
-              <img src={logo} alt="" srcSet="" />
+              <img src={logo} alt="" className="logo" />
             </Link>
           </div>
           <div className="elem">
@@ -112,8 +113,6 @@ function Navbar() {
             <input type="text" placeholder="Search" />
           </div>
 
-          
-
           {user ? (
             <div className="profile relative">
               <Link to="/profile" className="flex items-center">
@@ -125,10 +124,6 @@ function Navbar() {
                   className="rounded-full w-12 h-12"
                   id="picpro"
                 />
-                {/* <i className="px-10"
-                  // className="bi bi-caret-up-fill absolute bottom-0 left-1/2 transform -translate-x-1/2 hidden"
-                  id="ico3"
-                > </i> */}
               </Link>
             </div>
           ) : (
@@ -141,8 +136,6 @@ function Navbar() {
               </button>
             </div>
           )}
-
-
 
           {user ? (
             <>
@@ -222,7 +215,7 @@ function Navbar() {
                 className={`auth-tab ${isStudent ? "active" : ""}`}
                 onClick={setTrueForStudent}
               >
-                Employee andT&P
+                Employee and T&P
               </span>
             </h5>
             {isStudent ? (
@@ -297,7 +290,7 @@ function Navbar() {
 
                       <div className="mt-4 flex items-center justify-between">
                         <p className="text-sm">
-                          new to internarea? Register(
+                          New to Internship Hub? Register(
                           <span
                             className="text-blue-500 cursor-pointer"
                             onClick={closeLogin}
@@ -355,7 +348,7 @@ function Navbar() {
 
                     <div className="mt-4 flex items-center justify-between">
                       <p className="text-sm">
-                        new to internarea? Register(
+                        New to Internship Hub? Register(
                         <span
                           className="text-blue-500 cursor-pointer"
                           onClick={closeLogin}

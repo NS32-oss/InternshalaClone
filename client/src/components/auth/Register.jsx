@@ -18,6 +18,7 @@ function Register() {
     signInWithPopup(auth, provider)
       .then((res) => {
         console.log(res);
+        console.log("Login Success");
         toast.success("Login Success");
         navigate("/subscriptions"); // Redirect to subscriptions page after successful signup
       })
@@ -257,7 +258,7 @@ function Register() {
                 </div>
                 <div className="mt-6 flex items-center justify-between">
                   <p className="text-sm">
-                    New to InternArea? Register (
+                    New to Internship Hub? Register (
                     <span
                       className="text-blue-500 cursor-pointer"
                       onClick={closeLogin}
@@ -307,7 +308,7 @@ function Register() {
                 </div>
                 <div className="mt-6 flex items-center justify-between">
                   <p className="text-sm">
-                    New to InternArea? Register (
+                    New to Internship Hub? Register (
                     <span
                       className="text-blue-500 cursor-pointer"
                       onClick={closeLogin}

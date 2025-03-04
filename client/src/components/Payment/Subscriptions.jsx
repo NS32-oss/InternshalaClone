@@ -16,44 +16,84 @@ const plans = [
     name: "Free",
     price: 0,
     limit: 1,
-    description: "✔ Apply for 1 internship\n✔ Basic support\n✔ No recurring charges",
+    description:
+      "✔ Apply for 1 internship\n✔ Basic support\n✔ No recurring charges",
     options: [
-      { icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />, info: "Apply for 1 internship" },
-      { icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />, info: "Basic support" },
-      { icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />, info: "No recurring charges" },
+      {
+        icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />,
+        info: "Apply for 1 internship",
+      },
+      {
+        icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />,
+        info: "Basic support",
+      },
+      {
+        icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />,
+        info: "No recurring charges",
+      },
     ],
   },
   {
     name: "Bronze",
     price: 100,
     limit: 3,
-    description: "✔ Apply for up to 3 internships per month\n✔ Priority support\n✔ Affordable and flexible",
+    description:
+      "✔ Apply for up to 3 internships per month\n✔ Priority support\n✔ Affordable and flexible",
     options: [
-      { icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />, info: "Apply for up to 3 internships per month" },
-      { icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />, info: "Priority support" },
-      { icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />, info: "Affordable and flexible" },
+      {
+        icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />,
+        info: "Apply for up to 3 internships per month",
+      },
+      {
+        icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />,
+        info: "Priority support",
+      },
+      {
+        icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />,
+        info: "Affordable and flexible",
+      },
     ],
   },
   {
     name: "Silver",
     price: 300,
     limit: 5,
-    description: "✔ Apply for up to 5 internships per month\n✔ Faster application processing\n✔ Premium support",
+    description:
+      "✔ Apply for up to 5 internships per month\n✔ Faster application processing\n✔ Premium support",
     options: [
-      { icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />, info: "Apply for up to 5 internships per month" },
-      { icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />, info: "Faster application processing" },
-      { icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />, info: "Premium support" },
+      {
+        icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />,
+        info: "Apply for up to 5 internships per month",
+      },
+      {
+        icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />,
+        info: "Faster application processing",
+      },
+      {
+        icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />,
+        info: "Premium support",
+      },
     ],
   },
   {
     name: "Gold",
     price: 1000,
     limit: "Unlimited",
-    description: "✔ Unlimited internship applications\n✔ Priority placement assistance\n✔ Exclusive career resources & support",
+    description:
+      "✔ Unlimited internship applications\n✔ Priority placement assistance\n✔ Exclusive career resources & support",
     options: [
-      { icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />, info: "Unlimited internship applications" },
-      { icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />, info: "Priority placement assistance" },
-      { icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />, info: "Exclusive career resources & support" },
+      {
+        icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />,
+        info: "Unlimited internship applications",
+      },
+      {
+        icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />,
+        info: "Priority placement assistance",
+      },
+      {
+        icon: <CheckCircleIcon className="h-5 w-5 text-blue-gray-900" />,
+        info: "Exclusive career resources & support",
+      },
     ],
   },
 ];
@@ -66,6 +106,12 @@ const Subscriptions = () => {
   const handleSubscription = async () => {
     if (!selectedPlan || !email) {
       alert("Please enter email and select a plan.");
+      return;
+    }
+
+    if (selectedPlan === "Free") {
+      alert("Free plan activated!");
+      navigate("/"); // Redirect to home page
       return;
     }
 
@@ -111,9 +157,15 @@ const Subscriptions = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
-      <h1 className="text-5xl font-extrabold mb-6 text-blue-800">Choose a Subscription Plan</h1>
-      <Typography variant="lead" className="mb-10 font-normal text-gray-500 max-w-xl text-center">
-        Find the right plan that fits your needs and apply for internships seamlessly!
+      <h1 className="text-5xl font-extrabold mb-6 text-blue-800">
+        Choose a Subscription Plan
+      </h1>
+      <Typography
+        variant="lead"
+        className="mb-10 font-normal text-gray-500 max-w-xl text-center"
+      >
+        Find the right plan that fits your needs and apply for internships
+        seamlessly!
       </Typography>
 
       <div className="mb-4 w-80">
@@ -136,7 +188,9 @@ const Subscriptions = () => {
             key={key}
             variant="gradient"
             color="white"
-            className={`cursor-pointer ${selectedPlan === plan.name ? "border-2 border-blue-500" : ""}`}
+            className={`cursor-pointer ${
+              selectedPlan === plan.name ? "border-2 border-blue-500" : ""
+            }`}
             onClick={() => setSelectedPlan(plan.name)}
           >
             <CardHeader
@@ -145,15 +199,27 @@ const Subscriptions = () => {
               color="transparent"
               className="!m-0 p-4 text-center"
             >
-              <Typography variant="h6" color="blue-gray" className="capitalize font-bold mb-1">
+              <Typography
+                variant="h6"
+                color="blue-gray"
+                className="capitalize font-bold mb-1"
+              >
                 {plan.name}
               </Typography>
               <Typography variant="small" className="font-normal text-gray-500">
                 {plan.limit} members
               </Typography>
-              <Typography variant="h3" color="blue-gray" className="mt-2 flex items-center justify-center gap-1 text-3xl">
+              <Typography
+                variant="h3"
+                color="blue-gray"
+                className="mt-2 flex items-center justify-center gap-1 text-3xl"
+              >
                 ₹{plan.price}
-                <Typography as="span" color="blue-gray" className="opacity-70 text-lg font-bold">
+                <Typography
+                  as="span"
+                  color="blue-gray"
+                  className="opacity-70 text-lg font-bold"
+                >
                   /month
                 </Typography>
               </Typography>
@@ -161,11 +227,17 @@ const Subscriptions = () => {
             <CardBody className="pt-0">
               <ul className="flex flex-col gap-2 mb-4">
                 {plan.options.map((option, key) => (
-                  <li key={key} className="flex items-center gap-2 text-gray-700">
+                  <li
+                    key={key}
+                    className="flex items-center gap-2 text-gray-700"
+                  >
                     <span className="flex items-center justify-center w-6 h-6">
                       {option.icon}
                     </span>
-                    <Typography variant="small" className="font-normal text-inherit">
+                    <Typography
+                      variant="small"
+                      className="font-normal text-inherit"
+                    >
                       {option.info}
                     </Typography>
                   </li>

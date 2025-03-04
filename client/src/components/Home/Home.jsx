@@ -70,7 +70,7 @@ function Home() {
       <h1 className="text-center text-3xl font-bold">
         Make your dream career a reality
       </h1>
-      <p className="text-center text-lg font-bold">Trending on InternArea 🔥</p>
+      <p className="text-center text-lg font-bold">Trending on Internship Hub 🔥</p>
 
       <div className="imgs flex justify-center" id="container">
         <div className="slide flex mt-10 " id="content">
@@ -93,7 +93,7 @@ function Home() {
         <div className="info-intern">
           <div className="mt-16">
             <h1 className="text-center font-bold">
-              Latest internships on Intern Area
+              Latest internships on Internship Hub
             </h1>
           </div>
           <div className="categories flex flex-wrap mt-14">
@@ -179,7 +179,7 @@ function Home() {
       <div className="logins flex h-32 mt-8">
         <div className="cont">
           <p className="flex justify-center text-white text-2xl items-center m-5 w-80 h-30">
-            Empower your career with InternArea today
+            Empower your career with Internship Hub today
           </p>
         </div>
         <div className="log flex">
