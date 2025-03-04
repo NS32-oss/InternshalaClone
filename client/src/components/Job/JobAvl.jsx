@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./job.css";
-import compLogo from "../../Assets/netflix.png";
+import compLogo from "../../assets/netflix.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
