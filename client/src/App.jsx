@@ -15,13 +15,14 @@ import Profile from "./profile/Profile";
 import AdminLogin from "./admin/AdminLogin";
 import Adminpanel from "./admin/Adminpanel";
 import ViewAllApplication from "./admin/ViewAllApplication";
-import PostInternships from "./admin/PostInternships";
+import Postinternships from "./admin/Postinternships";
 import DetailApplication from "./applications/DetailApplication";
 import UserApplication from "./profile/UserApplication";
 import UserApplicationDetail from "./applications/DetailApplicationUser";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
 import Subscriptions from "./components/Payment/Subscriptions";
+import PostJob from "./admin/PostJob.jsx";
 
 function App() {
   const user = useSelector(selectUser);
@@ -60,8 +61,9 @@ function App() {
         <Route path="/detailInternship" element={<InternDetail />} />
         <Route path="/detailApplication" element={<DetailApplication />} />
         <Route path="/adminLogin" element={<AdminLogin />} />
-        <Route path="/adminPanel" element={<AdminPanel />} />
-        <Route path="/postInternship" element={<PostInternships />} />
+        <Route path="/Adminpanel" element={<Adminpanel />} />
+        <Route path="/Postinternships" element={<Postinternships />} />
+        <Route path="/PostJob" element={<PostJob />} />
         <Route path="/applications" element={<ViewAllApplication />} />
         <Route path="/userapplicationdetail" element={<UserApplicationDetail />} />
         <Route path="/userapplication" element={<UserApplication />} />
