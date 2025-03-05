@@ -52,7 +52,7 @@ function PostJob() {
         AdditionalInfo: additionalInfo,
       };
       axios
-        .post(`${API_BASE_URL}/api/job`, bodyJson)
+        .post(`${API_BASE_URL}/api/positions`, bodyJson)
         .then((res) => {
           console.log(res.data);
         })

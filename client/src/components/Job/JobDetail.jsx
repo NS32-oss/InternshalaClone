@@ -26,7 +26,7 @@ function JobDetail() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`${API_BASE_URL}/api/job/${id}`);
+      const response = await axios.get(`${API_BASE_URL}/api/positions/${id}`);
       const { company, category } = response.data;
       setCompany(company);
       setCategory(category);
@@ -125,7 +125,7 @@ function JobDetail() {
     }
 
     await axios
-      .post("${API_BASE_URL}/api/application", formData, {
+      .post(`${API_BASE_URL}/api/application`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

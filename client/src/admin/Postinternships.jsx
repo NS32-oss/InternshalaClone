@@ -52,7 +52,7 @@ function Postinternships() {
         AdditionalInfo: additionalInfo,
       };
       axios
-        .post(`${API_BASE_URL}/api/internship`, bodyJosn)
+        .post(`${API_BASE_URL}/api/training-programs`, bodyJosn)
         .then((res) => {
           console.log(res.data);
         })

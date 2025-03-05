@@ -18,9 +18,7 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `${API_BASE_URL}/api/internship`
-        );
+        const response = await axios.get(`${API_BASE_URL}/api/training-program`);
         setInternshipData(response.data);
       } catch (error) {
         console.log(error);
@@ -72,7 +70,9 @@ function Home() {
       <h1 className="text-center text-3xl font-bold">
         Make your dream career a reality
       </h1>
-      <p className="text-center text-lg font-bold">Trending on Internship Hub 🔥</p>
+      <p className="text-center text-lg font-bold">
+        Trending on Internship Hub 🔥
+      </p>
 
       <div className="imgs flex justify-center" id="container">
         <div className="slide flex mt-10 " id="content">
@@ -118,7 +118,8 @@ function Home() {
             {filterInternShips.map((data, index) => (
               <div className="int-1 mt-6" key={index}>
                 <p className="mb-4 mt-3" id="boxer">
-                  <i className="bi bi-arrow-up-right text-blue-500"></i> Actively Hiring
+                  <i className="bi bi-arrow-up-right text-blue-500"></i>{" "}
+                  Actively Hiring
                 </p>
                 <p>{data.title}</p>
                 <small className="text-slate-400 text-sm">{data.company}</small>

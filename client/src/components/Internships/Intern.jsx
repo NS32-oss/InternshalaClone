@@ -20,7 +20,7 @@ function Intern() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${API_BASE_URL}/api/internship`
+          `${API_BASE_URL}/api/training-programs`
         );
         setInternData(response.data);
         setFilterInternship(response.data); // Show all internships initially
