@@ -7,6 +7,8 @@ import { selectUser } from "../../feature/Userslice";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
 
+const API_BASE_URL = import.meta.env.REACT_APP_API_URL;
+
 function Sidebar() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();

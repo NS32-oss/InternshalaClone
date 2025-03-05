@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import "./job.css";
 import axios from "axios";
 
+const API_BASE_URL = import.meta.env.REACT_APP_API_URL;
+
 function JobDetail() {
   const user = useSelector(selectUser);
   const [isDivVisible, setDivVisible] = useState(false);
@@ -24,7 +26,7 @@ function JobDetail() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`http://localhost:5000/api/job/${id}`);
+      const response = await axios.get(`${API_BASE_URL}/api/job/${id}`);
       const { company, category } = response.data;
       setCompany(company);
       setCategory(category);
@@ -43,7 +45,7 @@ function JobDetail() {
 
   const sendOtp = async () => {
     // Send OTP to user's email
-    await axios.post("http://localhost:5000/api/otp/send-otp", {
+    await axios.post(`${API_BASE_URL}/api/otp/send-otp`, {
       email: user.email,
     });
     setOtpSent(true);
@@ -52,7 +54,7 @@ function JobDetail() {
   const verifyOtp = async () => {
     // Verify OTP
     const response = await axios.post(
-      "http://localhost:5000/api/otp/verify-otp",
+      `${API_BASE_URL}/api/otp/verify-otp`,
       {
         email: user.email,
         otp,
@@ -123,7 +125,7 @@ function JobDetail() {
     }
 
     await axios
-      .post("http://localhost:5000/api/application", formData, {
+      .post("${API_BASE_URL}/api/application", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

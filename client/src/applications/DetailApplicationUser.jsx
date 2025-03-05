@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
+const API_BASE_URL = import.meta.env.REACT_APP_API_URL;
+
 function DetailApplicationUser() {
   const [data, setData] = useState([]);
   let search = window.location.search;
@@ -10,7 +12,7 @@ function DetailApplicationUser() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        `http://localhost:5000/api/application/${id}`
+        `${API_BASE_URL}/api/application/${id}`
       );
 
       setData([response.data]);

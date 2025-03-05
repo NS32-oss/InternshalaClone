@@ -11,6 +11,8 @@ import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { MinusCircleIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
 
+const API_BASE_URL = import.meta.env.REACT_APP_API_URL;
+
 const plans = [
   {
     name: "Free",
@@ -117,7 +119,7 @@ const Subscriptions = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/payment/subscribe",
+        `${API_BASE_URL}/api/payment/subscribe`,
         {
           email,
           plan: selectedPlan,

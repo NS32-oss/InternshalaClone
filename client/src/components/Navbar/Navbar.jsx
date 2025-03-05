@@ -10,6 +10,8 @@ import { selectUser } from "../../feature/Userslice";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 
+const API_BASE_URL = import.meta.env.REACT_APP_API_URL;
+
 function Navbar() {
   const navigate = useNavigate();
   const user = useSelector(selectUser);

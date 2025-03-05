@@ -4,6 +4,8 @@ import compLogo from "../../assets/netflix.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+const API_BASE_URL = import.meta.env.REACT_APP_API_URL;
+
 function Intern() {
   const [searchCategory, setSearchCategory] = useState("");
   const [searchLocation, setSearchLocation] = useState("");
@@ -18,7 +20,7 @@ function Intern() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/internship`
+          `${API_BASE_URL}/api/internship`
         );
         setInternData(response.data);
         setFilterInternship(response.data); // Show all internships initially

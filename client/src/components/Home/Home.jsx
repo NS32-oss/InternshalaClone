@@ -8,6 +8,8 @@ import Job from "./Job";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+const API_BASE_URL = import.meta.env.REACT_APP_API_URL;
+
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -17,7 +19,7 @@ function Home() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/internship`
+          `${API_BASE_URL}/api/internship`
         );
         setInternshipData(response.data);
       } catch (error) {

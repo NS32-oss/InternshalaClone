@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectUser } from "../feature/Userslice";
 
+const API_BASE_URL = import.meta.env.REACT_APP_API_URL;
+
 function UserApplication() {
   const [application, setApplication] = useState([]);
   const user = useSelector(selectUser);
@@ -15,7 +17,7 @@ function UserApplication() {
     const fetchApplication = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/application"
+          `${API_BASE_URL}/api/application`
         );
         setApplication(response.data);
       } catch (error) {

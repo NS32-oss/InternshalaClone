@@ -5,6 +5,8 @@ import { selectUser } from "../../feature/Userslice";
 import "./detail.css";
 import axios from "axios";
 
+const API_BASE_URL = import.meta.env.REACT_APP_API_URL;
+
 function InternDetail() {
   const user = useSelector(selectUser);
   const [isDivVisible, setDivVisible] = useState(false);
@@ -33,7 +35,7 @@ function InternDetail() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        `http://localhost:5000/api/training-programs/${id}`
+        `${API_BASE_URL}/api/training-programs/${id}`
       );
       setData(response.data);
 
@@ -46,7 +48,7 @@ function InternDetail() {
 
   const sendOtp = async () => {
     // Send OTP to user's email
-    await axios.post("http://localhost:5000/api/otp/send-otp", {
+    await axios.post("${API_BASE_URL}/api/otp/send-otp", {
       email: user.email,
     });
     setOtpSent(true);
@@ -55,7 +57,7 @@ function InternDetail() {
   const verifyOtp = async () => {
     // Verify OTP
     const response = await axios.post(
-      "http://localhost:5000/api/otp/verify-otp",
+      "${API_BASE_URL}/api/otp/verify-otp",
       {
         email: user.email,
         otp,
@@ -126,7 +128,7 @@ function InternDetail() {
     }
 
     await axios
-      .post("http://localhost:5000/api/application", formData, {
+      .post("${API_BASE_URL}/api/application", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

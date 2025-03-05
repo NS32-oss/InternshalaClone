@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
+const API_BASE_URL = import.meta.env.REACT_APP_API_URL;
+
 function DetailApplication() {
   const [data, setData] = useState([]);
   let search = window.location.search;
@@ -10,7 +12,7 @@ function DetailApplication() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        `http://localhost:5000/api/application/${id}`
+        `${API_BASE_URL}/api/application/${id}`
       );
       setData([response.data]);
     };
@@ -20,7 +22,7 @@ function DetailApplication() {
   const handleAcceptAndReject = async (id, action) => {
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/application/${id}`,
+        `${API_BASE_URL}/api/application/${id}`,
         { action }
       );
       const UpdateApplication = data.map((app) =>

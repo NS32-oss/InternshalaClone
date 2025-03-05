@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+const API_BASE_URL = import.meta.env.REACT_APP_API_URL;
+
 function Job() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [jobData, setJobData] = useState([]);
@@ -9,7 +11,7 @@ function Job() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/positions`);
+        const response = await axios.get(`${API_BASE_URL}/api/positions`);
         setJobData(response.data);
       } catch (error) {
         console.error("Error fetching job data:", error);

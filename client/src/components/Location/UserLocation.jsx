@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 // Replace with your environment variables or hardcoded (not recommended) keys
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 const WEATHER_API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
+const API_BASE_URL = import.meta.env.REACT_APP_API_URL;
 
 const UserLocation = () => {
   const [location, setLocation] = useState(null);

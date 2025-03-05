@@ -4,6 +4,8 @@ import { selectUser } from "../feature/Userslice";
 import { Link } from "react-router-dom";
 import UserLocation from "../components/Location/UserLocation";
 
+const API_BASE_URL = import.meta.env.REACT_APP_API_URL;
+
 function Profile() {
   const user = useSelector(selectUser);
 

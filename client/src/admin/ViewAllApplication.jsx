@@ -3,13 +3,15 @@ import React, { useEffect, useState } from "react";
 import "./admin.css";
 import { Link } from "react-router-dom";
 
+const API_BASE_URL = import.meta.env.REACT_APP_API_URL;
+
 function ViewAllApplication() {
   const [application, setApplication] = useState([]);
   useEffect(() => {
     const fetchApplication = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/application"
+          `${API_BASE_URL}/api/application`
         );
         setApplication(response.data);
       } catch (error) {
