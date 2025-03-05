@@ -7,9 +7,18 @@ const port = process.env.PORT || 8080;
 
 const app = express();
 
-const allowedOrigins = ["https://internship-hub-two.vercel.app"];
+const allowedOrigins = [
+  "https://internship-hub-two.vercel.app",
+  "https://internship-e7f1bczrl-naman-suranas-projects-d780d57a.vercel.app",
+];
 
-app.use(cors({ origin: allowedOrigins, credentials: true }));
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 app.use(express.json());
