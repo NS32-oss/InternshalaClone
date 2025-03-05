@@ -18,7 +18,7 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${API_BASE_URL}/api/training-program`);
+        const response = await axios.get(`${API_BASE_URL}/api/training-programs`);
         setInternshipData(response.data);
       } catch (error) {
         console.log(error);
