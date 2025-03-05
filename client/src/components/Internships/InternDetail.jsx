@@ -57,7 +57,7 @@ function InternDetail() {
   const verifyOtp = async () => {
     // Verify OTP
     const response = await axios.post(
-      "${API_BASE_URL}/api/otp/verify-otp",
+      `${API_BASE_URL}/api/otp/verify-otp`,
       {
         email: user.email,
         otp,
