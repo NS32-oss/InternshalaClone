@@ -19,6 +19,7 @@ function JobAvl() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log("API_BASE_URL for jobAvl.jsx", API_BASE_URL);
         const response = await axios.get(`${API_BASE_URL}/api/positions`);
         setJobData(response.data);
         setFilterJob(response.data); // Show all jobs initially

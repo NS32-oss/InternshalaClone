@@ -26,6 +26,7 @@ function JobDetail() {
 
   useEffect(() => {
     const fetchData = async () => {
+      console.log("API_BASE_URL for jobdetail.jsx", API_BASE_URL);
       const response = await axios.get(`${API_BASE_URL}/api/positions/${id}`);
       const { company, category } = response.data;
       setCompany(company);
@@ -53,13 +54,10 @@ function JobDetail() {
 
   const verifyOtp = async () => {
     // Verify OTP
-    const response = await axios.post(
-      `${API_BASE_URL}/api/otp/verify-otp`,
-      {
-        email: user.email,
-        otp,
-      }
-    );
+    const response = await axios.post(`${API_BASE_URL}/api/otp/verify-otp`, {
+      email: user.email,
+      otp,
+    });
     console.log(response.data);
     if (response.data.success) {
       setIsOtpVerified(true);

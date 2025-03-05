@@ -54,6 +54,7 @@ function PostJob() {
       axios
         .post(`${API_BASE_URL}/api/positions`, bodyJson)
         .then((res) => {
+          console.log("API_BASE_URL for PostJob.jsx", API_BASE_URL);
           console.log(res.data);
         })
         .catch((err) => console.log(err));
