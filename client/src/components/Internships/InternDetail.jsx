@@ -5,7 +5,7 @@ import { selectUser } from "../../feature/Userslice";
 import "./detail.css";
 import axios from "axios";
 
-const API_BASE_URL = import.meta.env.REACT_APP_API_URL;
+const API_BASE_URL = import.meta.env.VITE_APP_API_URL;
 
 function InternDetail() {
   const user = useSelector(selectUser);

@@ -11,7 +11,7 @@ import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { MinusCircleIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
 
-const API_BASE_URL = import.meta.env.REACT_APP_API_URL;
+const API_BASE_URL = import.meta.env.VITE_APP_API_URL;
 
 const plans = [
   {

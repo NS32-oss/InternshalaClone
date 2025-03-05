@@ -5,7 +5,7 @@ import { auth, provider } from "../../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const API_BASE_URL = import.meta.env.REACT_APP_API_URL;
+const API_BASE_URL = import.meta.env.VITE_APP_API_URL;
 
 function Register() {
   const [isStudent, setStudent] = useState(true);
