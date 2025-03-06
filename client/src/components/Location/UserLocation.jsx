@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 // Replace with your environment variables or hardcoded (not recommended) keys
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
@@ -10,6 +10,7 @@ const UserLocation = () => {
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState(null);
   const [mapLoaded, setMapLoaded] = useState(false);
+  const mapContainerRef = useRef(null);
 
   // When location is updated, (re)load Google Maps
   useEffect(() => {
@@ -37,7 +38,7 @@ const UserLocation = () => {
     try {
       // 1. Reverse Geocode (Google Maps API)
       const geoRes = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${GOOGLE_MAPS_API_KEY}`
+        `https://maps.gomaps.pro/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${GOOGLE_MAPS_API_KEY}`
       );
       const geoData = await geoRes.json();
 
@@ -86,7 +87,7 @@ const UserLocation = () => {
     if (!window.google) {
       // Dynamically load the Google Maps script
       const script = document.createElement("script");
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&callback=initMap`;
+      script.src = `https://maps.gomaps.pro/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&callback=initMap`;
       script.async = true;
       script.defer = true;
       // Once the script loads, set mapLoaded to true
@@ -99,15 +100,28 @@ const UserLocation = () => {
   };
 
   useEffect(() => {
-    // Once map is loaded, initialize it
-    if (mapLoaded && location?.latitude && location?.longitude) {
-      initMap();
+    if (
+      mapLoaded &&
+      location?.latitude &&
+      location?.longitude &&
+      mapContainerRef.current
+    ) {
+      setTimeout(() => {
+        initMap();
+      }, 100); // 100ms delay to allow the DOM to update
     }
   }, [mapLoaded, location]);
+  useEffect(() => {
+    console.log("Map container:", mapContainerRef.current);
+  }, []);
+  
+  
 
   window.initMap = () => {
+    if (!mapContainerRef.current) return;
+
     const { latitude, longitude } = location;
-    const map = new window.google.maps.Map(document.getElementById("map"), {
+    const map = new window.google.maps.Map(mapContainerRef.current, {
       center: { lat: latitude, lng: longitude },
       zoom: 12,
     });
@@ -118,20 +132,20 @@ const UserLocation = () => {
       title: "You are here!",
     });
 
-    // Create an InfoWindow with weather details
-    const infoWindowContent = `
-      <div style="font-size: 14px;">
-        <p><strong>${location.city || "Your Location"}</strong></p>
-        <p>Weather: ${weather?.description || "N/A"}</p>
-        <p>Temp: ${weather?.temperature || "N/A"}°C</p>
-        <p>Humidity: ${weather?.humidity || "N/A"}%</p>
-        <p>Wind: ${weather?.windSpeed || "N/A"} m/s</p>
-      </div>
-    `;
-    const infoWindow = new window.google.maps.InfoWindow({
-      content: infoWindowContent,
-    });
-    infoWindow.open(map, marker);
+    // // Create an InfoWindow with weather details
+    // const infoWindowContent = `
+    //   <div style="font-size: 14px;">
+    //     <p><strong>${location.city || "Your Location"}</strong></p>
+    //     <p>Weather: ${weather?.description || "N/A"}</p>
+    //     <p>Temp: ${weather?.temperature || "N/A"}°C</p>
+    //     <p>Humidity: ${weather?.humidity || "N/A"}%</p>
+    //     <p>Wind: ${weather?.windSpeed || "N/A"} m/s</p>
+    //   </div>
+    // `;
+    // const infoWindow = new window.google.maps.InfoWindow({
+    //   content: infoWindowContent,
+    // });
+    // infoWindow.open(map, marker);
   };
 
   return (
@@ -191,6 +205,7 @@ const UserLocation = () => {
             <div className="w-full md:w-1/2 h-64 rounded-md shadow-md overflow-hidden">
               <div
                 id="map"
+                ref={mapContainerRef}
                 className="w-full h-full animate__animated animate__fadeIn"
               />
             </div>
