@@ -10,6 +10,9 @@ const app = express();
 const allowedOrigins = [
   "https://internship-hub-two.vercel.app",
   "https://internship-e7f1bczrl-naman-suranas-projects-d780d57a.vercel.app",
+  "https://internship-hub-eifx.onrender.com",
+  "http://localhost:5173",
+  "http://localhost:3000",
 ];
 
 app.use(

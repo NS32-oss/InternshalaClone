@@ -128,7 +128,7 @@ function InternDetail() {
     }
 
     await axios
-      .post("${API_BASE_URL}/api/application", formData, {
+      .post(`${API_BASE_URL}/api/application`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

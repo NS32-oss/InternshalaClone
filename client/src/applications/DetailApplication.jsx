@@ -11,9 +11,7 @@ function DetailApplication() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(
-        `${API_BASE_URL}/api/application/${id}`
-      );
+      const response = await axios.get(`${API_BASE_URL}/api/application/${id}`);
       setData([response.data]);
     };
     fetchData();
@@ -39,7 +37,10 @@ function DetailApplication() {
   return (
     <div>
       {data.map((data) => (
-        <section className="text-gray-600 body-font overflow-hidden" key={data._id}>
+        <section
+          className="text-gray-600 body-font overflow-hidden"
+          key={data._id}
+        >
           <div className="container px-5 py-24 mx-auto">
             <div className="lg:w-4/5 mx-auto flex flex-wrap">
               <img
