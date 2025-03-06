@@ -48,7 +48,7 @@ function InternDetail() {
 
   const sendOtp = async () => {
     // Send OTP to user's email
-    await axios.post("${API_BASE_URL}/api/otp/send-otp", {
+    await axios.post(`${API_BASE_URL}/api/otp/send-otp`, {
       email: user.email,
     });
     setOtpSent(true);
