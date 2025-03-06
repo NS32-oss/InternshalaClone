@@ -20,7 +20,7 @@ const plans = {
 // ✅ Allow payments only from 10-11 AM IST
 const isAllowedTime = () => {
   const currentISTTime = moment().utcOffset("+05:30");
-  return currentISTTime.hour() === 10;
+  return currentISTTime.hour() === 18;
 };
 
 router.post("/subscribe", async (req, res) => {
