@@ -8,7 +8,7 @@ const port = process.env.PORT || 8080;
 const app = express();
 
 const allowedOrigins = [
-  "https://internship-hub-two.vercel.app",
+  "https://internship-hub-two.vercel.app",  
   "https://internship-e7f1bczrl-naman-suranas-projects-d780d57a.vercel.app",
   "https://internship-hub-eifx.onrender.com",
   "http://localhost:5173",
@@ -17,11 +17,19 @@ const allowedOrigins = [
 
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        return callback(new Error("Not allowed by CORS"), false);
+      }
+      return callback(null, true);
+    },
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
+
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 app.use(express.json());
