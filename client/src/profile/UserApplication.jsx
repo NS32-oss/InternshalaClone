@@ -72,7 +72,7 @@ function UserApplication() {
                         {data.user.name}
                       </td>
                       <td className="whitespace-nowrap px-6 py-4">
-                        <Link to={`/UserapplicationDetail?a=${data._id}`}>
+                        <Link to={`/userapplicationdetail?a=${data._id}`}>
                           <i className="bi bi-envelope-open text-blue-500"></i>
                         </Link>
                       </td>
@@ -124,7 +124,7 @@ function UserApplication() {
                         Application status {data.status}
                       </p>
                       <Link
-                        to={`/UserapplicationDetail?a=${data._id}`}
+                        to={`/userapplicationdetail?a=${data._id}`}
                         className="mt-3 text-indigo-500 inline-flex items-center"
                       >
                         View in detail

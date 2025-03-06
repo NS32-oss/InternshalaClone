@@ -21,7 +21,7 @@ function Adminpanel() {
               </div>
             </Link>
 
-            <Link to="/postJob" className="group flex gap-4">
+            <Link to="/PostJob" className="group flex gap-4">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-indigo-500 text-white shadow-lg transition duration-100 group-hover:bg-indigo-600 group-active:bg-indigo-700 md:h-12 md:w-12">
                 <i className="bi bi-briefcase"></i>
               </div>
@@ -33,7 +33,7 @@ function Adminpanel() {
               </div>
             </Link>
 
-            <Link to="/postInternship" className="group flex gap-4">
+            <Link to="/Postinternships" className="group flex gap-4">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-indigo-500 text-white shadow-lg transition duration-100 group-hover:bg-indigo-600 group-active:bg-indigo-700 md:h-12 md:w-12">
                 <RiSendPlaneFill />
               </div>

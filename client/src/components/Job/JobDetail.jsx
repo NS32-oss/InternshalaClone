@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { selectUser } from "../../feature/Userslice";
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import "./job.css";
+import { selectUser } from "../../feature/Userslice";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
 const API_BASE_URL = import.meta.env.VITE_APP_API_URL;
@@ -25,13 +24,20 @@ function JobDetail() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    if (!user) {
+      navigate("/register");
+    }
+  }, [user, navigate]);
+
+  useEffect(() => {
     const fetchData = async () => {
-      console.log("API_BASE_URL for jobdetail.jsx", API_BASE_URL);
-      const response = await axios.get(`${API_BASE_URL}/api/positions/${id}`);
+      const response = await axios.get(
+        `${API_BASE_URL}/api/training-programs/${id}`
+      );
+      setData(response.data);
       const { company, category } = response.data;
       setCompany(company);
       setCategory(category);
-      setData(response.data);
     };
     fetchData();
   }, [id]);
@@ -45,7 +51,6 @@ function JobDetail() {
   };
 
   const sendOtp = async () => {
-    // Send OTP to user's email
     await axios.post(`${API_BASE_URL}/api/otp/send-otp`, {
       email: user.email,
     });
@@ -53,12 +58,10 @@ function JobDetail() {
   };
 
   const verifyOtp = async () => {
-    // Verify OTP
     const response = await axios.post(`${API_BASE_URL}/api/otp/verify-otp`, {
       email: user.email,
       otp,
     });
-    console.log(response.data);
     if (response.data.success) {
       setIsOtpVerified(true);
       alert("OTP verified successfully. Proceed with the application");

@@ -9,6 +9,7 @@ const API_BASE_URL = import.meta.env.VITE_APP_API_URL;
 
 function InternDetail() {
   const user = useSelector(selectUser);
+  const navigate = useNavigate();
   const [isDivVisible, setDivVisible] = useState(false);
   const [textarea, setTextarea] = useState("");
   const [company, setCompany] = useState("");
@@ -18,10 +19,15 @@ function InternDetail() {
   const [otp, setOtp] = useState("");
   const [isOtpVerified, setIsOtpVerified] = useState(false);
   const [otpSent, setOtpSent] = useState(false);
-  const navigate = useNavigate();
   let search = window.location.search;
   const params = new URLSearchParams(search);
   const id = params.get("q");
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/register");
+    }
+  }, [user, navigate]);
 
   const show = () => {
     setDivVisible(true);
@@ -56,13 +62,10 @@ function InternDetail() {
 
   const verifyOtp = async () => {
     // Verify OTP
-    const response = await axios.post(
-      `${API_BASE_URL}/api/otp/verify-otp`,
-      {
-        email: user.email,
-        otp,
-      }
-    );
+    const response = await axios.post(`${API_BASE_URL}/api/otp/verify-otp`, {
+      email: user.email,
+      otp,
+    });
     console.log(response.data);
     if (response.data.success) {
       setIsOtpVerified(true);
