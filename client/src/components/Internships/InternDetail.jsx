@@ -135,7 +135,7 @@ function InternDetail() {
       })
       .then((res) => {})
       .catch((err) => {
-        alert("An error occurred");
+        console.log("An error occurred");
       });
     alert("Internship application submitted successfully");
     navigate("/Jobs");
