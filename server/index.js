@@ -7,26 +7,20 @@ const port = process.env.PORT || 8080;
 
 const app = express();
 
-const allowedOrigins = [
-  "https://internship-hub-two.vercel.app",  
-  "https://internship-e7f1bczrl-naman-suranas-projects-d780d57a.vercel.app",
-  "https://internship-hub-naman-suranas-projects-d780d57a.vercel.app",
-  "https://internship-kx4whvxop-naman-suranas-projects-d780d57a.vercel.app",
-  "https://internship-hub-eifx.onrender.com",
-  "https://internship-hub-git-main-naman-suranas-projects-d780d57a.vercel.app",
-  "http://localhost:5173",
-  "http://localhost:3000",
-];
+// For debugging: log the incoming Origin header
+app.use((req, res, next) => {
+  console.log("Incoming Origin:", req.headers.origin);
+  next();
+});
 
+// Temporarily allow all origins (for debugging only)
 app.use(
   cors({
     origin: function (origin, callback) {
-      // Allow requests with no origin (like mobile apps or curl requests)
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.indexOf(origin) === -1) {
-        return callback(new Error("Not allowed by CORS"), false);
-      }
-      return callback(null, true);
+      // Log the origin being checked
+      console.log("Checking Origin:", origin);
+      // Allow all origins for now
+      callback(null, true);
     },
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
@@ -37,7 +31,7 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 app.use(express.json());
 
-// Set COOP and COEP headers
+// Set COOP and COEP headers (if needed)
 app.use((req, res, next) => {
   res.setHeader("Cross-Origin-Opener-Policy", "same-origin-allow-popups");
   res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
