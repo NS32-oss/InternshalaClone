@@ -7,25 +7,7 @@ const port = process.env.PORT || 8080;
 
 const app = express();
 
-// For debugging: log the incoming Origin header
-app.use((req, res, next) => {
-  console.log("Incoming Origin:", req.headers.origin);
-  next();
-});
-
-// Temporarily allow all origins (for debugging only)
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      // Log the origin being checked
-      console.log("Checking Origin:", origin);
-      // Allow all origins for now
-      callback(null, true);
-    },
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
+app.use(cors());
 
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
