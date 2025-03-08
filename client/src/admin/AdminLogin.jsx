@@ -22,7 +22,6 @@ function AdminLogin() {
         `${API_BASE_URL}/api/admin/adminLogin`,
         bodyJson
       );
-      console.log(res, "Data sent");
       alert("Login successful");
       navigate("/adminPanel");
     } catch (err) {

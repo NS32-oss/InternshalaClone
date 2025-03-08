@@ -18,7 +18,6 @@ function ViewAllApplication() {
     };
     fetchApplication();
   }, []);
-  console.log("APPLICATION : ", application);
   return (
     <div>
       <div className="hide">

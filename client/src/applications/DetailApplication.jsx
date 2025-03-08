@@ -32,7 +32,6 @@ function DetailApplication() {
     }
   };
 
-  console.log(data);
 
   return (
     <div>

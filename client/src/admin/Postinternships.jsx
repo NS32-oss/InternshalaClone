@@ -54,7 +54,6 @@ function Postinternships() {
       axios
         .post(`${API_BASE_URL}/api/training-programs`, bodyJosn)
         .then((res) => {
-          console.log(res.data);
         })
         .catch((err) => console.log(err));
     }

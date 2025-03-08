@@ -19,8 +19,6 @@ function Register() {
   const handleSignIn = () => {
     signInWithPopup(auth, provider)
       .then((res) => {
-        console.log(res);
-        console.log("Login Success");
         toast.success("Login Success");
         navigate("/subscriptions"); // Redirect to subscriptions page after successful signup
       })

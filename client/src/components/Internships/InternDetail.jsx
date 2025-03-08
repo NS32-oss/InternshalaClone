@@ -66,7 +66,6 @@ function InternDetail() {
       email: user.email,
       otp,
     });
-    console.log(response.data);
     if (response.data.success) {
       setIsOtpVerified(true);
       alert("OTP verified successfully. Proceed with the application");

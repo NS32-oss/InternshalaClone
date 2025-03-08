@@ -70,7 +70,6 @@ const UserLocation = () => {
       );
       if (!weatherRes.ok) throw new Error("Weather API error.");
       const weatherData = await weatherRes.json();
-      console.log(weatherData);
 
       setWeather({
         description: weatherData.weather[0]?.description || "N/A",
@@ -111,9 +110,6 @@ const UserLocation = () => {
       }, 100); // 100ms delay to allow the DOM to update
     }
   }, [mapLoaded, location]);
-  useEffect(() => {
-    console.log("Map container:", mapContainerRef.current);
-  }, []);
   
   
 

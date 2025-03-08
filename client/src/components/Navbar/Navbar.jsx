@@ -23,7 +23,6 @@ function Navbar() {
   const loginFunction = () => {
     signInWithPopup(auth, provider)
       .then((res) => {
-        console.log(res);
         navigate("/subscriptions");
       })
       .catch((err) => {

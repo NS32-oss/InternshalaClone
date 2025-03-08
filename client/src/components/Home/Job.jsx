@@ -11,7 +11,6 @@ function Job() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log("API_BASE_URL for job.jsx", API_BASE_URL);
         const response = await axios.get(`${API_BASE_URL}/api/positions`);
         setJobData(response.data);
       } catch (error) {

@@ -14,9 +14,6 @@ const sendOtp = async (req, res) => {
 
   email = email.toLowerCase(); // Normalize email
 
-//   console.log("Sending OTP to:", email);
-//   console.log("Current OTP Store:", otpStore); // Debugging log
-
   const existingEntry = otpStore[email];
   const currentTime = Date.now();
 
@@ -24,12 +21,10 @@ const sendOtp = async (req, res) => {
     existingEntry &&
     currentTime - existingEntry.lastRequested < requestInterval
   ) {
-    return res
-      .status(429)
-      .json({
-        success: false,
-        error: "Too many OTP requests. Please try again later.",
-      });
+    return res.status(429).json({
+      success: false,
+      error: "Too many OTP requests. Please try again later.",
+    });
   }
 
   const otp = Math.floor(100000 + Math.random() * 900000).toString();
@@ -51,15 +46,12 @@ const sendOtp = async (req, res) => {
 
   try {
     await transporter.sendMail(mailOptions);
-    console.log("Email sent successfully");
 
     otpStore[email] = {
       otp,
       expires: Date.now() + 10 * 60 * 1000,
       lastRequested: Date.now(),
     };
-
-    console.log("Updated OTP Store:", otpStore); // Debugging log
 
     return res
       .status(200)
@@ -80,9 +72,6 @@ const verifyOtp = async (req, res) => {
   }
 
   email = email.toLowerCase(); // Normalize email
-
-//   console.log("Verifying OTP for:", email);
-//   console.log("OTP Store at Verification:", otpStore);
 
   const entry = otpStore[email];
 
