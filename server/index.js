@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Hello THIS is My backend");
+  res.send("HELLO THIS is My backend");
 });
 
 app.use("/api", router);
